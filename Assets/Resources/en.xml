@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<entries>
+  <!-- Exemple à réutiliser :
+  <entry name="Exemple">
+    <line value="Premiere ligne de dialogue à afficher"></line>
+    <line value="Deuxieme ligne de dialogue à afficher"></line>
+  </entry> -->
+  <!-- Valeurs utiliser dans le jeu -->
+
+  <!-- Dialogues pour la partie Worksapce (not in the game) -->
+  <entry name="DONUT">
+    <line value="This is a donut on the floor."></line>
+    <line value="It can't be eaten anymore..."></line>
+    <line value="Hopefully Homer isn't there"></line>
+  </entry>
+  <entry name="DUFF">
+    <line value="A half empty beer ?"></line>
+    <line value="Something bad must have happened"></line>
+  </entry>
+</entries>
