@@ -6,9 +6,12 @@ using UnityEngine.Events;
 public class RoomDoorController : MonoBehaviour
 {
     [SerializeField]
+    private string doorName;
+    [SerializeField]
     private List<string> orderedListIdsDialogues = new List<string>();
     private List<string> interactedDialogues = new List<string>();
 
+    [SerializeField]
     private bool isOrderRespected = false;
 
     [SerializeField]
@@ -40,7 +43,6 @@ public class RoomDoorController : MonoBehaviour
         {
             if (!interactedDialogues[i].Equals(orderedListIdsDialogues[i]))
             {
-                Debug.Log("Coucou" + i);
                 return;
             }
         }
@@ -48,5 +50,20 @@ public class RoomDoorController : MonoBehaviour
         isOrderRespected = true;
         signalEvent.Invoke();
         Debug.Log("Congrats ! You have finish the room");
+    }
+
+    public string GetName()
+    {
+        return doorName;
+    }
+
+    public bool GetOrderRespected()
+    {
+        return isOrderRespected;
+    }
+
+    public void SetOrderRespected(bool value)
+    {
+        isOrderRespected = value;
     }
 }
