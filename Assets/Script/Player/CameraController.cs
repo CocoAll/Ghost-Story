@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Playables;
 
 public class CameraController : MonoBehaviour
 {
@@ -9,6 +8,8 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private Transform cameraTarget, playerTransform;
     private float mouseX, mouseY;
+
+    private static bool inputEnabled = true;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,10 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        CameraControl();
+        if (inputEnabled)
+        {
+            CameraControl();
+        }
     }
 
     void CameraControl()
@@ -36,5 +40,17 @@ public class CameraController : MonoBehaviour
         cameraTarget.rotation = Quaternion.Euler(mouseY, mouseX, 0);
         //We rotate the player
         playerTransform.rotation = Quaternion.Euler(0, mouseX, 0);
+    }
+
+    //Static method to enable or disabled inputs (for cinematics)
+
+    public static void DisableInput(PlayableDirector pd)
+    {
+        inputEnabled = false;
+    }
+
+    public static void EnableInput(PlayableDirector pd)
+    {
+        inputEnabled = true;
     }
 }

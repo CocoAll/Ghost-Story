@@ -41,14 +41,6 @@ public class SavingManager: MonoBehaviour
             MemoryStream ms = new MemoryStream(Convert.FromBase64String(a));
             saveDatas = bf.Deserialize(ms) as List<SaveData>;
 
-            /*
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file =
-                       File.Open(Application.persistentDataPath
-                       + "/data.sav", FileMode.Open);
-            List<SaveData> saveDatas = (List<SaveData>)bf.Deserialize(file);
-            file.Close();*/
-
             RoomDoorController[] rdc = FindObjectsOfType<RoomDoorController>();
             foreach (RoomDoorController obj in rdc)
             {
