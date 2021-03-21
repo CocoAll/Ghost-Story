@@ -15,4 +15,4 @@ MonoBehaviour:
   id: DUFF
   text: DUFF
   dialogue: {fileID: 8300000, guid: 75a423d0a60916d4ca04b42d0757255d, type: 3}
-  firstInterraction: 1
+  firstInterraction: 0

@@ -3,9 +3,8 @@ using UnityEngine.Playables;
 
 public class CinematicsController : MonoBehaviour
 {
-    [SerializeField]
-    PlayableDirector[] childrenCinematics;
-    //TODO : A refaire ! C'est moche
+    private PlayableDirector[] childrenCinematics;
+
     private void Awake()
     {
         childrenCinematics = GetComponentsInChildren<PlayableDirector>();

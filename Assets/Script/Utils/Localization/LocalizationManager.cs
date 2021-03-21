@@ -2,19 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class LocalizationManager : MonoBehaviour
 {
     private static readonly string DEFAULT_LOCAL_REF = "en";
+
+    private static LocalizationManager instance;
+
+    public static LocalizationManager Instance { get { return instance; } }
 
     private XMLLoader xmlLoader;
     [SerializeField]
     private LocaleValue locale;
 
-    private Dictionary<string, string[]> entries;
+    private Dictionary<string, string> entries;
 
-    private void Start() 
+    private void Awake()
     {
+        // if the singleton hasn't been initialized yet
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+
+        instance = this;
+        DontDestroyOnLoad(this.gameObject);
+
         LoadLocale();
+        //Gestion de la local au chargement
     }
 
     public void LoadLocale()
@@ -24,7 +39,7 @@ public class LocalizationManager : MonoBehaviour
         entries = xmlLoader.loadDictionnary();
     }
 
-    public string[] GetDialogue(string key)
+    public string GetDialogue(string key)
     {
         if (!entries.ContainsKey(key)){
             throw new System.Exception("Impossible to found " + key + " in localization file");

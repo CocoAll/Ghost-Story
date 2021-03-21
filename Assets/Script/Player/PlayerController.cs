@@ -13,6 +13,14 @@ public class PlayerController : MonoBehaviour
     private BooleanValue canInteract;
 
     private static bool inputEnabled = true;
+    private SphereCollider collider;
+    private Rigidbody rigidbody;
+
+    private void Start()
+    {
+        collider = GetComponent<SphereCollider>();
+        rigidbody = GetComponent<Rigidbody>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -23,13 +31,23 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerMovement()
     {
+        if(rigidbody.angularVelocity != Vector3.zero)
+        {
+            rigidbody.angularVelocity = Vector3.zero;
+        }
+
         if (inputEnabled)
         {
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
             if(horizontalInput != 0 || verticalInput != 0){
                 Vector3 playerMovementDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
-                transform.Translate(playerMovementDirection * Time.deltaTime * movementSpeed, Space.Self);
+                RaycastHit hit;
+                if (!Physics.SphereCast(transform.position, collider.radius, 
+                    Vector3.Scale(this.transform.forward,playerMovementDirection), out hit, (Time.deltaTime * movementSpeed)))
+                {
+                    transform.Translate(playerMovementDirection * Time.deltaTime * movementSpeed, Space.Self);
+                }
             } 
         }
     }

@@ -24,20 +24,16 @@ public class XMLLoader
         }
     }
 
-    public Dictionary<string,string[]> loadDictionnary()
+    public Dictionary<string,string> loadDictionnary()
     {
-        Dictionary<string, string[]> dictio = new Dictionary<string, string[]>();
+        Dictionary<string, string> dico = new Dictionary<string, string>();
         XmlNodeList list = xmlDoc.DocumentElement.SelectNodes("/entries/entry");
         foreach (XmlNode node in list)
         {
             string key = node.Attributes["name"].Value;
-            List<string> value = new List<string>();
-            foreach(XmlNode subNode in node.ChildNodes)
-            {
-                value.Add(subNode.Attributes["value"].Value);
-            }
-            dictio.Add(key, value.ToArray());
+            string value = node.Attributes["value"].Value;
+            dico.Add(key, value);
         }
-        return dictio;
+        return dico;
     }
 }
