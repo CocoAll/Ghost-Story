@@ -15,4 +15,4 @@ MonoBehaviour:
   id: DONUT
   text: DONUT
   dialogue: {fileID: 8300000, guid: 47fab58b71507834592536b920d593a6, type: 3}
-  firstInterraction: 0
+  firstInterraction: 1

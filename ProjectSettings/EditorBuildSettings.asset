@@ -11,5 +11,8 @@ EditorBuildSettings:
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 25bce558409d9f24bb28c1b0c5ea07ee,
       type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: 278ad29049d7ccd419df773ebfb27315,
+      type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: c978401012fa13442887c0288670ec96,
       type: 2}
+  m_UseUCBPForAssetBundles: 0

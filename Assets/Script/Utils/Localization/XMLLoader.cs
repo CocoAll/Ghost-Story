@@ -20,7 +20,7 @@ public class XMLLoader
         }
         catch
         {
-            throw new FileNotFoundException("Le fichier n'a pas été trouvé");
+            throw new FileNotFoundException("File " + fileName + " not found");
         }
     }
 

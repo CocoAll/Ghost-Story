@@ -27,7 +27,7 @@ public class InteractableObjectController : MonoBehaviour
         if (dialogueObject.firstInterraction && playableDirector != null)
         {
             playableDirector.Play();
-            dialogueObject.firstInterraction = false;
+            if (dialogueObject.firstInterraction) dialogueObject.firstInterraction = false;
         }
 
         interactionSignalSender.Raise();

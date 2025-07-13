@@ -11,11 +11,6 @@ public class DetectionZoneController : MonoBehaviour
 
     private static InteractableObjectController ioc;
 
-    public static InteractableObjectController getIoc()
-    {
-        return ioc;
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Interactable")
@@ -36,9 +31,9 @@ public class DetectionZoneController : MonoBehaviour
         }
     }
 
-    private void DoInteraction(GameObject gameObject)
+    public static void DoInteraction()
     {
-        if (gameObject == null) return;
-        gameObject.GetComponent<InteractableObjectController>().Interact();
+        if (ioc == null) return;
+        ioc.Interact(); ;
     }
 }

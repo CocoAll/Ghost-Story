@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0810dc1a7c342142ae92af6a7264a39, type: 3}
   m_Name: Game Locale
   m_EditorClassIdentifier: 
-  currentLocale: 14
+  currentLocale: 10
   availableLocale:
   - locale: 10
     localeRef: en
