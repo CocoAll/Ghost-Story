@@ -4,6 +4,8 @@ using UnityEngine.Playables;
 public class CinematicsController : MonoBehaviour
 {
     private PlayableDirector[] childrenCinematics;
+    [SerializeField]
+    private BooleanValue inputsEnabled;
 
     private void Awake()
     {
@@ -12,10 +14,8 @@ public class CinematicsController : MonoBehaviour
         foreach(PlayableDirector playDir in childrenCinematics)
         {
             playDir.gameObject.SetActive(false);
-            playDir.played += PlayerController.DisableInput;
-            playDir.stopped += PlayerController.EnableInput;
-            playDir.played += CameraController.DisableInput;
-            playDir.stopped += CameraController.EnableInput;
+            playDir.played += _ => inputsEnabled.value = false;
+            playDir.stopped += _ => inputsEnabled.value = true;
             playDir.gameObject.SetActive(true);
         }
     }

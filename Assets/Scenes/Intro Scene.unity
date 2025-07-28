@@ -382,7 +382,7 @@ PrefabInstance:
     - target: {fileID: 4518222067327231403, guid: 4b4510673c68c96438a8db604904f15e,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4518222067327231403, guid: 4b4510673c68c96438a8db604904f15e,
         type: 3}
@@ -529,6 +529,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9095737788361688690, guid: 4b4510673c68c96438a8db604904f15e,
+        type: 3}
+      propertyPath: inputsEnabled
+      value: 
+      objectReference: {fileID: 11400000, guid: d779d299247b0de4fa3728aa6207749a,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1416,6 +1422,12 @@ PrefabInstance:
       propertyPath: cameraTarget
       value: 
       objectReference: {fileID: 443105122}
+    - target: {fileID: 2716389297644820304, guid: 7c217d1f28fedb7449f6956e65ae775f,
+        type: 3}
+      propertyPath: inputsEnabled
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a8580a765063ed488778e46bcb5d61e,
+        type: 2}
     - target: {fileID: 2716389297644820304, guid: 7c217d1f28fedb7449f6956e65ae775f,
         type: 3}
       propertyPath: playerTransform

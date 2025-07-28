@@ -21,6 +21,16 @@ public class RoomDoorController : MonoBehaviour
 
     private DialogueInteractionObject dio;
 
+    [SerializeField]
+    private TimelineCinematic tc;
+
+    private CinematicManager cm;
+
+    private void Start()
+    {
+        cm = CinematicManager.Instance;
+    }
+
     public void CheckInteraction()
     {
         dio = lastInteractedDialogue.interracted;
@@ -65,5 +75,10 @@ public class RoomDoorController : MonoBehaviour
     public void SetOrderRespected(bool value)
     {
         isOrderRespected = value;
+    }
+
+    public void LaunchLastRoomCinematic()
+    {
+        cm.PlayCinematic(tc);
     }
 }

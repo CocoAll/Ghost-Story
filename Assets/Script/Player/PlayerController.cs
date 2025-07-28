@@ -12,11 +12,11 @@ public class PlayerController : MonoBehaviour
     private float movementSpeed = 1.0f;
     [SerializeField]
     private BooleanValue canInteract;
+    [SerializeField]
+    private BooleanValue inputsEnabled;
 
-    private static bool inputEnabled = true;
     private SphereCollider collider;
     private Rigidbody rigidbody;
-    private PlayerInput playerInput;
     PlayerInputActions playerInputActions;
 
     private Vector2 movementInputsPressed;
@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
         // Retrieve necessary components for player functionality
         collider = GetComponent<SphereCollider>();
         rigidbody = GetComponent<Rigidbody>();
-        playerInput = GetComponent<PlayerInput>();
 
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
@@ -39,7 +38,6 @@ public class PlayerController : MonoBehaviour
     {
         // Manage player movement and player inputs
         PlayerMovement();
-        //PlayerInput();
     }
 
     // Handle player movement
@@ -54,7 +52,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Check if player inputs are enabled
-        if (inputEnabled)
+        if (inputsEnabled.value)
         {
             // Check if the player is actually moving
             if (movementInputsPressed.x != 0 || movementInputsPressed.y != 0)
@@ -74,29 +72,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Handle player inputs
+    // Handle player inputs (TODO : Rename because it just handle click ?)
     private void PlayerInput(InputAction.CallbackContext context)
     {
         // Check if player inputs are enabled, if they can interact, and if the mouse button is pressed
-        if (inputEnabled && canInteract.value)
+        if (inputsEnabled.value && canInteract.value)
         {
             // Call the interaction function of the detection zone controller
             DetectionZoneController.DoInteraction();
         }
-    }
-
-    /*
-     * Static methods to enable or disable inputs (for cinematics)
-     */
-    public static void DisableInput(PlayableDirector pd)
-    {
-        // Disable player inputs
-        inputEnabled = false;
-    }
-
-    public static void EnableInput(PlayableDirector pd)
-    {
-        // Enable player inputs
-        inputEnabled = true;
     }
 }

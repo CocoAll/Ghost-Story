@@ -8,20 +8,18 @@ public class CameraController : MonoBehaviour
     private float rotationSpeed = 0.5f;
     [SerializeField]
     private Transform cameraTarget, playerTransform;
+    [SerializeField]
+    private BooleanValue inputsEnabled;
+
     private float mouseX, mouseY;
-
-    private static bool inputEnabled = true;
-    private PlayerInput playerInput;
     private Vector2 cameraInputsPressed;
-
-    PlayerInputActions playerInputActions;
+    private PlayerInputActions playerInputActions;
 
 
     // Start is called before the first frame update
     void Awake()
     {
         Cursor.visible = false;
-        playerInput = GetComponent<PlayerInput>();
 
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
@@ -29,7 +27,7 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (inputEnabled)
+        if (inputsEnabled.value)
         {
             CameraControl();
         }
@@ -52,17 +50,5 @@ public class CameraController : MonoBehaviour
         
         //We rotate the player
         playerTransform.rotation = Quaternion.Euler(0, mouseX, 0);
-    }
-
-    //Static method to enable or disabled inputs (for cinematics)
-
-    public static void DisableInput(PlayableDirector pd)
-    {
-        inputEnabled = false;
-    }
-
-    public static void EnableInput(PlayableDirector pd)
-    {
-        inputEnabled = true;
     }
 }

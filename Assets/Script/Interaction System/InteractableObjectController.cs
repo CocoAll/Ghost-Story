@@ -12,8 +12,13 @@ public class InteractableObjectController : MonoBehaviour
     [SerializeField]
     private InteractedDialogueObject lastInteractedObject;
     [SerializeField]
-    private PlayableDirector playableDirector;
+    private TimelineCinematic cinematic;
+    private CinematicManager cm;
 
+    private void Start()
+    {
+        cm = CinematicManager.Instance;
+    }
     public void Interact()
     {
         
@@ -24,9 +29,9 @@ public class InteractableObjectController : MonoBehaviour
         }
 
         //TODO : Externaliser ça ?
-        if (dialogueObject.firstInterraction && playableDirector != null)
+        if (dialogueObject.firstInterraction && cinematic != null && cm != null)
         {
-            playableDirector.Play();
+            cm.PlayCinematic(cinematic);
             if (dialogueObject.firstInterraction) dialogueObject.firstInterraction = false;
         }
 
